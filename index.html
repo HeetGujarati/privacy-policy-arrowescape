@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Arrow Escape | Zenlio Technologies</title>
+    <meta name="description" content="Privacy Policy for Arrow Escape, a casual puzzle game developed by Zenlio Technologies. Learn how we handle your data.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0e17;
+            --bg-card: #111827;
+            --bg-card-hover: #1a2332;
+            --border: #1e293b;
+            --border-accent: #334155;
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-glow: rgba(99, 102, 241, 0.15);
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-amber: #f59e0b;
+            --accent-emerald: #10b981;
+            --accent-rose: #f43f5e;
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ── Ambient Background ── */
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .ambient-bg .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+        .ambient-bg .orb-1 {
+            width: 500px; height: 500px;
+            background: var(--primary);
+            top: -10%; left: -10%;
+            animation-delay: 0s;
+        }
+        .ambient-bg .orb-2 {
+            width: 400px; height: 400px;
+            background: #8b5cf6;
+            bottom: -10%; right: -10%;
+            animation-delay: -7s;
+        }
+        .ambient-bg .orb-3 {
+            width: 300px; height: 300px;
+            background: var(--accent-emerald);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+            opacity: 0.15;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 30px) scale(0.95); }
+        }
+
+        /* ── Container ── */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── Header ── */
+        header {
+            padding: 28px 0 0;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .logo-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .header-badge {
+            padding: 6px 14px;
+            background: var(--primary-glow);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-light);
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            text-align: center;
+            padding: 64px 0 48px;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: var(--primary-glow);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-light);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 14px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 20px;
+        }
+        .hero-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .hero-meta .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+        }
+
+        /* ── Quick Stats ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--primary-glow);
+        }
+        .stat-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .stat-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* ── Table of Contents ── */
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-bottom: 36px;
+        }
+        .toc-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .toc-list a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .toc-list a:hover {
+            background: var(--primary-glow);
+            color: var(--primary-light);
+        }
+        .toc-num {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-glow);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-light);
+            flex-shrink: 0;
+        }
+
+        /* ── Policy Sections ── */
+        .policy-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        .policy-section:hover {
+            border-color: var(--border-accent);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .section-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .section-icon.purple { background: linear-gradient(135deg, var(--primary), #8b5cf6); }
+        .section-icon.amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .section-icon.emerald { background: linear-gradient(135deg, #10b981, #059669); }
+        .section-icon.rose { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+        .section-icon.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .section-icon.teal { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+        .section-icon.pink { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .section-icon.indigo { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .policy-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+        .policy-text:last-child { margin-bottom: 0; }
+
+        .policy-list {
+            list-style: none;
+            margin: 14px 0;
+        }
+        .policy-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .policy-list li::before {
+            content: '›';
+            color: var(--primary-light);
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            flex-shrink: 0;
+        }
+
+        /* ── Info Box ── */
+        .info-box {
+            background: rgba(99, 102, 241, 0.06);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 14px 18px;
+            margin: 16px 0;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ── Ad Partner Cards ── */
+        .partner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .partner-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            transition: all 0.3s ease;
+        }
+        .partner-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-1px);
+        }
+        .partner-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .partner-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .partner-logo.google { background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .partner-logo.unity { background: linear-gradient(135deg, #6366f1, #4338ca); }
+        .partner-logo.firebase { background: linear-gradient(135deg, #f59e0b, #dc2626); }
+
+        .partner-name {
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .partner-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .partner-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-light);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        .partner-link:hover { color: #a5b4fc; }
+
+        /* ── Contact Card ── */
+        .contact-card {
+            background: var(--bg-card);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), #8b5cf6, var(--accent-emerald));
+        }
+        .contact-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .contact-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        .contact-email {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 100px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+        .contact-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 32px 0 40px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        footer .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--border);
+            margin: 0 auto 16px;
+            border-radius: 2px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .toc-list { grid-template-columns: 1fr; }
+            .partner-grid { grid-template-columns: 1fr; }
+            .policy-section { padding: 22px; }
+            .hero { padding: 40px 0 32px; }
+            .header-badge { display: none; }
+        }
+
+        /* ── Scroll Animation ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🏹</div>
+                    <div>
+                        <div class="logo-text">Arrow Escape</div>
+                        <div class="logo-sub">Zenlio Technologies</div>
+                    </div>
+                </a>
+                <div class="header-badge">LEGAL</div>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-badge">Privacy Policy</div>
+            <h1>Your Privacy Matters</h1>
+            <p>Transparency about how Arrow Escape handles your data. We believe privacy is a fundamental right, not an afterthought.</p>
+            <div class="hero-meta">
+                <span class="dot"></span>
+                <span>Last updated: September 2026</span>
+                <span>·</span>
+                <span>Arrow Escape v1.0</span>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <div class="stats-grid fade-in">
+            <div class="stat-card">
+                <div class="stat-icon">🔒</div>
+                <div class="stat-label">PII Collected</div>
+                <div class="stat-value">None</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💾</div>
+                <div class="stat-label">Data Storage</div>
+                <div class="stat-value">Local Only</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🚫</div>
+                <div class="stat-label">Data Sold</div>
+                <div class="stat-value">Never</div>
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <nav class="toc fade-in">
+            <div class="toc-title">Table of Contents</div>
+            <ul class="toc-list">
+                <li><a href="#overview"><span class="toc-num">1</span>Overview</a></li>
+                <li><a href="#data-collection"><span class="toc-num">2</span>Data We Collect</a></li>
+                <li><a href="#analytics"><span class="toc-num">3</span>Analytics</a></li>
+                <li><a href="#advertising"><span class="toc-num">4</span>Advertising & Third-Party SDKs</a></li>
+                <li><a href="#children"><span class="toc-num">5</span>Children's Privacy</a></li>
+                <li><a href="#permissions"><span class="toc-num">6</span>App Permissions</a></li>
+                <li><a href="#data-sharing"><span class="toc-num">7</span>Data Sharing</a></li>
+                <li><a href="#rights"><span class="toc-num">8</span>Your Rights & Choices</a></li>
+                <li><a href="#changes"><span class="toc-num">9</span>Changes to This Policy</a></li>
+                <li><a href="#contact"><span class="toc-num">10</span>Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- 1. Overview -->
+        <section id="overview" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon purple">ℹ️</div>
+                <div>
+                    <div class="section-title">Overview</div>
+                    <div class="section-subtitle">Who we are & what this policy covers</div>
+                </div>
+            </div>
+            <p class="policy-text">
+                Arrow Escape ("we", "us", or "our") is a casual puzzle game developed by <strong>Zenlio Technologies</strong>. This Privacy Policy explains what information is collected when you play Arrow Escape and how it is used.
+            </p>
+            <p class="policy-text">
+                We take your privacy seriously. We do not sell your personal data. By playing Arrow Escape, you agree to the practices described in this policy.
+            </p>
+            <div class="info-box">
+                📦 Package ID: com.zenliotechnologies.arrowescape &nbsp;·&nbsp; Platform: Android (Google Play)
+            </div>
+        </section>
+
+        <!-- 2. Data We Collect -->
+        <section id="data-collection" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon emerald">💾</div>
+                <div>
+                    <div class="section-title">Data We Collect</div>
+                    <div class="section-subtitle">What information is gathered</div>
+                </div>
+            </div>
+            <p class="policy-text">
+                Arrow Escape itself <strong>does not collect, store, or transmit any personally identifiable information (PII)</strong>. All game progress is stored locally on your device only.
+            </p>
+            <ul class="policy-list">
+                <li>Game progress, level completion, and scores — stored locally</li>
+                <li>Audio and haptic settings — stored locally on your device</li>
+                <li>Daily play streak — stored locally on your device</li>
+            </ul>
+            <p class="policy-text">
+                Our advertising and analytics partners may collect certain data as described in the sections below.
+            </p>
+        </section>
+
+        <!-- 3. Analytics -->
+        <section id="analytics" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon blue">📊</div>
+                <div>
+                    <div class="section-title">Analytics</div>
+                    <div class="section-subtitle">How we understand app usage</div>
+                </div>
+            </div>
+            <p class="policy-text">
+                We use Firebase Analytics and Firebase Crashlytics to understand how players interact with the game and to identify and fix crashes. These services may collect:
+            </p>
+            <ul class="policy-list">
+                <li>App usage data (screens visited, features used)</li>
+                <li>Device information (model, OS version)</li>
+                <li>Crash logs and performance data</li>
+            </ul>
+            <p class="policy-text">
+                This data is anonymised and used solely to improve the game experience. No personally identifiable information is collected through analytics.
+            </p>
+
+            <div class="partner-grid">
+                <div class="partner-card">
+                    <div class="partner-header">
+                        <div class="partner-logo firebase">🔥</div>
+                        <div class="partner-name">Firebase Analytics</div>
+                    </div>
+                    <div class="partner-desc">Anonymised usage data to improve gameplay.</div>
+                    <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="partner-link">Privacy Policy →</a>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-header">
+                        <div class="partner-logo firebase">🛠️</div>
+                        <div class="partner-name">Firebase Crashlytics</div>
+                    </div>
+                    <div class="partner-desc">Crash reports for stability improvements.</div>
+                    <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="partner-link">Privacy Policy →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Advertising -->
+        <section id="advertising" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon amber">📢</div>
+                <div>
+                    <div class="section-title">Advertising & Third-Party SDKs</div>
+                    <div class="section-subtitle">Ad networks and their data practices</div>
+                </div>
+            </div>
+            <p class="policy-text">
+                Arrow Escape is a free game supported by ads. The following ad networks may collect data to show relevant advertisements. Each operates under their own privacy policy.
+            </p>
+
+            <div class="partner-grid">
+                <div class="partner-card">
+                    <div class="partner-header">
+                        <div class="partner-logo google">G</div>
+                        <div class="partner-name">Google AdMob</div>
+                    </div>
+                    <div class="partner-desc">May collect device identifiers, IP address, and usage data to serve targeted ads.</div>
+                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="partner-link">Privacy Policy →</a>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-header">
+                        <div class="partner-logo unity">U</div>
+                        <div class="partner-name">Unity Ads</div>
+                    </div>
+                    <div class="partner-desc">May collect device identifiers, gameplay data, and ad interaction data.</div>
+                    <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener" class="partner-link">Privacy Policy →</a>
+                </div>
+            </div>
+
+            <div class="info-box">
+                💡 You can opt out of personalised ads via <strong>Android Settings → Privacy → Ads → Opt out of Ads Personalisation</strong>.
+            </div>
+        </section>
+
+        <!-- 5. Children's Privacy -->
+        <section id="children" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon rose">👶</div>
+                <div>
+                    <div class="section-title">Children's Privacy</div>
+                    <div class="section-subtitle">Protecting younger users</div>
+                </div>
+            </div>
+            <p class="policy-text">
+                Arrow Escape is not directed at children under the age of 13. We do not knowingly collect personal information from children. Our ad partners are configured to serve non-personalised ads appropriate for a general audience.
+            </p>
+            <p class="policy-text">
+                If you are a parent or guardian and believe your child has provided us with personal information, please contact us so we can take appropriate action.
+            </p>
+        </section>
+
+        <!-- 6. App Permissions -->
+        <section id="permissions" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon teal">🛡️</div>
+                <div>
+                    <div class="section-title">App Permissions</div>
+                    <div class="section-subtitle">Only what's necessary</div>
+                </div>
+            </div>
+            <p class="policy-text">
+                Arrow Escape requests only the following Android permissions:
+            </p>
+            <ul class="policy-list">
+                <li><strong>INTERNET</strong> — Required to load advertisements and send analytics/crash data</li>
+                <li><strong>ACCESS_NETWORK_STATE</strong> — Allows SDKs to check connectivity before loading ads</li>
+            </ul>
+            <p class="policy-text" style="color: var(--text-muted); font-size: 13px;">
+                No other permissions (camera, microphone, location, contacts, storage) are requested.
+            </p>
+        </section>
+
+        <!-- 7. Data Sharing -->
+        <section id="data-sharing" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon pink">🔗</div>
+                <div>
+                    <div class="section-title">Data Sharing</div>
+                    <div class="section-subtitle">Who receives your data</div>
+                </div>
+            </div>
+            <p class="policy-text">
+                We do not sell, rent, or trade your personal information to any third party. Data may be shared only with:
+            </p>
+            <ul class="policy-list">
+                <li>Ad network partners (AdMob, Unity) solely to serve advertisements</li>
+                <li>Firebase services for analytics and crash reporting</li>
+                <li>Google Play Services for app distribution</li>
+            </ul>
+        </section>
+
+        <!-- 8. Your Rights -->
+        <section id="rights" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon indigo">⚖️</div>
+                <div>
+                    <div class="section-title">Your Rights & Choices</div>
+                    <div class="section-subtitle">How you can control your data</div>
+                </div>
+            </div>
+            <ul class="policy-list">
+                <li>Reset your Advertising ID via Android Settings → Privacy → Ads</li>
+                <li>Opt out of personalised advertising via Android Ads settings</li>
+                <li>Delete all local game data by uninstalling the app</li>
+                <li>Contact us for information about data collected by our ad partners</li>
+            </ul>
+        </section>
+
+        <!-- 9. Changes -->
+        <section id="changes" class="policy-section fade-in">
+            <div class="section-header">
+                <div class="section-icon purple">🔄</div>
+                <div>
+                    <div class="section-title">Changes to This Policy</div>
+                    <div class="section-subtitle">How updates are communicated</div>
+                </div>
+            </div>
+            <p class="policy-text">
+                We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated revision date. Continued use of Arrow Escape after changes constitutes acceptance of the updated policy.
+            </p>
+        </section>
+
+        <!-- 10. Contact -->
+        <section id="contact" class="contact-card fade-in">
+            <div class="contact-title">Contact Us</div>
+            <p class="contact-text">Questions about this Privacy Policy? We're happy to help.</p>
+            <a href="mailto:support@zenliotechnologies.com" class="contact-email">
+                support@zenliotechnologies.com
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="divider"></div>
+            <p>© 2026 Zenlio Technologies · Arrow Escape</p>
+            <p style="margin-top: 6px;">All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
